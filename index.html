@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <!-- ? react의 중심이 되는 소스 -->
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <!-- ? JSX (react만의 독특한 마크업 방식 javascript XML 줄임말) DOM API 처리 소스 -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- ? 트랜스컴파일링 바벨 _ JSX등 여러가지를 -> 웹브라우저 랜더링(출력)에 맞게 소스를 변환한다. -->
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel" data-type="module">
+    const root = document.getElementById('root');
+    console.log(root);
+    // 변수로 컴포넌트를 작성해주는 방식인 것 같다
+    // 태그를 작성하고 싶으면 문자열이 아니라 태그 자체로 작성해야한다
+    const Div = <div></div>;
+    const Section = <section></section>;
+    const Span = <span></span>;
+    const H1 = <h1></h1>;
+    const P = <p></p>;
+
+    let h1Str = `<span>단무지</span> 성격 유형 테스트`;
+    let divTxtArr = [];
+
+
+    // html 만드는 것은 PascalCase로 작성해주기
+    
+    function DivOne(){
+      return(
+        <div>
+          {H1}
+          {Div}
+          </div>
+          )
+        }
+    
+    function DivTwo(){
+      return(
+        <div>
+          <div>
+            {P}
+          </div>
+          {Div}
+        </div>
+      )
+    }
+        
+  // 함수 안에 함수를 또 넣을 수가 있다
+        // 텍스트 노드 자리에 태그를 작성해주는 함수를 넣어서 innerHTML처럼 사용하는 방식
+    function SectionOne(){
+      return(
+        <section>
+        </section>
+      )
+    }
+
+    function SectionTwo(){
+      return(
+        <section>
+          <DivOne/>
+          {Div}
+          <DivTwo/>
+        </section>
+      )
+    }
+
+    const main = 
+    <div id="main">
+      <SectionOne/>
+      <SectionTwo/>
+    </div>;
+    
+    // 붙여주는 부분
+    ReactDOM.render(main, root);
+
+  </script>
+
+</body>
+
+</html>
