@@ -16,6 +16,7 @@
 
 <body>
   <div id="root"></div>
+
   <script type="text/babel" data-type="module">
     const root = document.getElementById('root');
     console.log(root);
@@ -28,7 +29,8 @@
     const P = <p></p>;
 
     let h1Str = `<span>단무지</span> 성격 유형 테스트`;
-    let divTxtArr = [];
+    let divStrArr = [`사람의 성격만큼 다양한 단무지!`,`<br>`,`당신은 어떤 단무지와 닮아있을까요?`];
+    let pStr = `닮은 유형을 알려드릴게요`; 
 
 
     // html 만드는 것은 PascalCase로 작성해주기
@@ -36,9 +38,11 @@
     function DivOne(){
       return(
         <div>
-          {H1}
-          {Div}
+          <div>
+            {H1}
+            {Div}
           </div>
+        </div>
           )
         }
     
@@ -46,9 +50,11 @@
       return(
         <div>
           <div>
+          <div>
             {P}
           </div>
           {Div}
+          </div>
         </div>
       )
     }
@@ -79,6 +85,7 @@
     </div>;
     
     // 붙여주는 부분
+    // ?https://ko.reactjs.org/docs/react-dom.html
     ReactDOM.render(main, root);
 
   </script>
