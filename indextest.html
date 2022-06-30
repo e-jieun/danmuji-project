@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+    <!-- *main -->
+    <div id="main">
+      <section></section>
+      <section>
+        <!-- title -->
+        <div>
+          <div>
+            <h1>
+              <span>단무지</span> 성격 유형 테스트
+            </h1>
+            <div>사람의 성격만큼 다양한 단무지!<br>
+              당신은 어떤 단무지와 닮아있을까요?</div>
+          </div>
+        </div>
+        <!-- blank -->
+        <div></div>
+        <!-- next-btn -->
+        <div>
+          <div>
+            <div>
+              <p>닮은 유형을 알려드릴게요!</p>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- *question -->
+    <!-- 컴포넌트로 만들어줘서 반복되는 질문 페이지에 여러번 붙여줄 부분 -->
+    <div id="question">
+      <section class="queCon">
+        <div>quesiton 1.</div>
+        <picture></picture>
+      </section>
+      <section class="answerCon">
+        <!-- 이 부분에서 인풋 타입 체크박스로 만들어줘야 하나? -->
+        <!-- 버튼으로 만들어주는 편이 나을 수도 -->
+        <!-- 버튼도 있는데 -->
+        <!-- 그리고 나서 체크박스로 선택이 되면 -->
+        <input class="answer-1" type="checkbox">
+          <p>answer1. Lorem ipsum dolor sit amet.</p>
+        <!-- 사용자가 버튼을 클릭하면 값을 변화시켜주는 이벤트를 달아줘야 한다
+        나중에 결과가 나올 때 집계가 돼서 나오도록 해야하기 때문에 -->
+        <!-- 그리고 선택을 하면 값을 배열에 저장해주고 다음 페이지로 넘어가도록 해줘야 한다 -->
+        <input class="answer-2" type="button">
+          <p>answer2. Lorem ipsum dolor sit amet.
+          </p>
+      </section>
+      <section class="progressCon">
+        <!-- 페이지 현 지점 알려주는 텍스트 -->
+        <div>1/4</div>
+        <!-- 감싸주는 프로그레스바 컨테이너 -->
+        <div>
+          <div>
+            <!-- 채워지는 부분 -->
+            <span></span>
+            <!-- 동그란 원형 부분 -->
+            <div></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div id="chg-screen">
+      <img src="" alt="">
+      <!-- btncon -->
+      <div>
+        <div>현재 결과를 가져오고 있습니다</div>
+        <div></div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
