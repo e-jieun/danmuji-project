@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+* #root {
+  white-space: pre-wrap;
+}
+
+* #root > {
+  width: 100vw;
+  height: 100vh;
+}
+/*# sourceMappingURL=common.css.map */
