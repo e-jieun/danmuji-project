@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./common.css">
+  <link rel="stylesheet" href="./scss/common.css">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <!-- ? react의 중심이 되는 소스 -->
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
@@ -26,42 +26,37 @@
     // 태그를 작성하고 싶으면 문자열이 아니라 태그 자체로 작성해야한다
     
     // todo: 생성자 함수로 태그 요소를 작성해주는 부분을 다시 작성해서 태그 만들어 주자
-//     class Element {
-//   // 생성자 함수 => 인스턴스의 역할
-//   // 디폴트 파라미터로 타입이 지정되어있다
-//   // 현재 하나의 태그
-//   constructor(tagName, id = '', classList = [], children = [], parent = null) {
-//     this.tagName = tagName;
-//     this.id = id;
-//     this.classList = classList;
-//     this.children = children;
-//     this.parent = parent;
-//     this.style = {
-//       width: '',
-//       height: '',
-//       backgroundColor: '',
-//       color: ''
-//     }
-//   }
-// }
-
-    class MakeElement{
-      constructor(tagName, ){
-
+    
+    class ElementStyle{
+      constructor(width='', height='', display='', align='', justify='', position=''){
+        this.style = {
+          width: width,
+          height: height,
+          display: display,
+          alignItems: align,
+          justifyContent: justify,
+          position: position
+        }
       }
     }
 
-    const mainText = {
-      title: `단무지 성격 유형 테스트`,
-      textsubtitle: `사람의 성격만큼 다양한 단무지 종류\n당신은 어떤 단무지 종류와 닮아있을까요?`, 
-      buttontext: `닮은 단무지를 찾아봐요!`
+    class Element {
+      constructor(tagName, id = '', classList = [], children = [], parent = null) {
+        this.tagName = tagName;
+        this.id = id;
+        this.classList = classList;
+        this.children = children;
+        this.parent = parent;
+        this.style = new ElementStyle();
+      }
     }
-    // 
-    // const mainTextSubtitleArr = [`사람의 성격만큼 다양한 단무지 종류`, <br/>, `당신은 어떤 단무지 종류와 닮아있을까요?`]; 
-    
-    // br태그를 붙여주는 함수
-    function makeLine(elem){
-        return elem+<br/>
+
+    function AppendChild(content){
+        return(
+          <div>
+            {content}
+          </div>
+        )
     }
 
     class QuestionText{
@@ -71,54 +66,27 @@
         this.answerTwo = answerTwo;
       }
     }
-
+    
     // ?지금 여기서 <br/>코드를 사용해서 문장마다 나눠줘야 하는데
     // !해결을 하긴 했는데 escape 문자와 css 속성 중 하나인 white-space: pre-wrap;을 사용해서 \n이 빈 칸이 되는 공간을 줄바꿈이 되도록 만들어줬다
+    const mainText = new QuestionText(`단무지 성격 유형 테스트`,`사람의 성격만큼 다양한 단무지 종류\n 당신은 어떤 단무지 종류와 닮았을까요?`,`닮은 단무지 찾으러 GO!`)
     const q1 = new QuestionText('우연히 발견한 맛집의 단무지, 너무나도 내 취향이다!\n도대체 어떤 단무지인지 사장님께 여쭤보고 싶어졌다', '계산하며 사장님 에게 어느 회사의 단무지인지 단무지 특제 레시피가 있는지 물어본다', '다음에 맛집에 다시 방문해서 단무지를 좀 더 달라고 해야겠다란 생각을 하며 식사를 마친다');
     const q2 = new QuestionText('맛집에 또 다시 방문했다\n오늘따라 상큼하게 느껴지는 프레쉬한 단무지\n유자향이 나는 단무지인 것 같다고 했더니 친구가 그걸 어떻게 알았냐고 물어본다', '유자향이 나기에 유자향이 난다고 한 것이온데...', '이건 새로운 단무지 세계로 날 인도해준 단무지야! 미미!'); 
     const q3 = new QuestionText('단무지를 먹는데 친구가 이 집 단무지는 뭔가 특별하다고 한다', '\"단무지가 다 똑같은 단무지지...\"라고 생각한다', '\"그치! 나도 이 집 단무지 너무 좋아! 뭔가 특별하다니까!\"라고 공감한다');
     const q4 = new QuestionText('이전에 갔던 맛집에 친구와 다시 가자고 약속을 잡았다\n약속을 잡고나서 당신이 할 일은?', '이번에 가면 이 단무지 물어봐야지', '저번에 그 집 단무지 맛있었는데...');
 
-
+    // html 만드는 것은 PascalCase로 작성해주기
     const Div = <div></div>;
     const Section = <section></section>;
     const Span = <span></span>;
     const H1 = <h1></h1>;
     const P = <p></p>;
     const Picture = <picture></picture>;
-    // html 만드는 것은 PascalCase로 작성해주기
-
-
-    const TitleTxt = TextDiv(mainText.title);
-    // !배열을 객체에 넣어주고 줄바꿈을 하고싶은 자리를 바꿔서 넣어줬더니 바뀜
-    // ?다만 이 방식이 좋은 방법은 아닌 것 같은게 이 부분에서 계속 리액트 디벨롭먼트 자바스크립트에서 문제가 생겼었다 그래서 다시 문자열 형태로 바꿔줬다
-    const SubtitleTxt = TextDiv(mainText.textsubtitle);
-    console.log(SubtitleTxt);
-    const BtnTxt = TextDiv(mainText.buttontext);
     
-    // *text가 포함된 div 태그를 만들어 주는 함수
-    function TextDiv(text){
-      return(
-        <div>
-          {text}
-        </div>
-      )
-    }
-    
-    function TitleCon(){
-      return(
-        <div>
-          <div>
-            {TitleTxt}
-            {SubtitleTxt}
-          </div>
-        </div>
-          )
-        }
-    
+    // *반복적으로 사용할 부분들
     function BtnCon(text){
       return(
-        <div>
+        <div className='btn-con'>
           <div>
             <div>
               {text}
@@ -128,37 +96,20 @@
         </div>
       )
     }
-        
-    function ImgCon(src, alt, srcSet){
+    
+    function ImgCon(src='', alt='', srcSet=''){
       return(
         <img src={src} alt={alt} srcSet={srcSet}></img>
       )
     }
 
   // 함수 안에 함수를 또 넣을 수가 있다
-        // 텍스트 노드 자리에 태그를 작성해주는 함수를 넣어서 innerHTML처럼 사용하는 방식
-    function SectionOne(){
-      return(
-        <section>
-        </section>
-      )
-    }
-
-    function SectionTwo(){
-      return(
-        <section>
-          <TitleCon/>
-          {Div}
-          {BtnCon(mainText.buttontext)}
-        </section>
-      )
-    }
-
-    // class 심어줄 때 className라는 키로 접근, jsx는 js에서 사용하는 것과 같이 접근해야함
+  // 텍스트 노드 자리에 태그를 작성해주는 함수를 넣어서 innerHTML처럼 사용하는 방식
+  // class 심어줄 때 className라는 키로 접근, jsx는 js에서 사용하는 것과 같이 접근해야함
     function ProgressCon(num){
       return(
         <div className="progress-con">
-          {TextDiv(num+'/4')}
+          {AppendChild(`${num}/4`)}
           <div>
             <div>
               {Span}
@@ -168,38 +119,56 @@
         </div>
       )
     }
-    // createElement를 사용해서 요소로 붙여줘도 됨
-    // let ProgressCon = React.createElement(
-    //       `div`,
-    //       {className: 'progressCon'},
-    //       `hello`
-    // );
 
+    // *main
+    const titleTxt = mainText.question;
+    // !배열을 객체에 넣어주고 줄바꿈을 하고싶은 자리를 바꿔서 넣어줬더니 바뀜
+    // ?다만 이 방식이 좋은 방법은 아닌 것 같은게 이 부분에서 계속 리액트 디벨롭먼트 자바스크립트에서 문제가 생겼었다 그래서 다시 문자열 형태로 바꿔줬다
+
+    const subtitleTxt = mainText.answerOne;
+    console.log(subtitleTxt);
+    const btnTxt = mainText.answerTwo;
+    function TitleCon(h1Txt, divTxt){
+      return(
+        <div>
+          {AppendChild(h1Txt)}
+          {AppendChild(divTxt)}
+        </div>
+      )
+    }
+
+
+    // function ResultOne(){
+
+    // }
 
     // =========================================
     // !감싸주는 부모 태그가 반드시 존재해야한다
     function Main(){
       return (
         <div id="main">
-          <SectionOne/>
-          <SectionTwo/>
+          {Section}
+          <section>
+            {TitleCon(titleTxt, subtitleTxt)}
+            {Div}
+            {BtnCon(btnTxt)}
+          </section>
         </div>
       )
     };
 
-    // !아이디가 페이지마다 넘버링 되도록 해줌
-    // ?페이지 넘버링마다 텍스트를 불러와주려면
+  //   // !아이디가 페이지마다 넘버링 되도록 해줌
+  //   // ?페이지 넘버링마다 텍스트를 불러와주려면
     function Question(num, qNum){
       let idNum = `question-`+num;
       return(
         <div id={idNum}>
           <div className="q-con">
-          {TextDiv(qNum.question)}
-          {Picture}
+            {AppendChild(qNum.question)}
           </div>
           <div className="a-con">
-            {TextDiv(qNum.answerOne)}
-            {TextDiv(qNum.answerTwo)}
+            {BtnCon(qNum.answerOne)}
+            {BtnCon(qNum.answerTwo)}
           </div>
           {ProgressCon(num)}
         </div>        
@@ -210,8 +179,10 @@
     function ChgScreen(){
       return(
         <div id="change-screen">
-          {ImgCon('/TVT.png')}
-          {BtnCon('현재 결과를 가져오고 있습니다')}
+          {ImgCon('TVT.png')}
+          <div>
+            {BtnCon('현재 결과를 가져오고 있습니다')}
+          </div>
         </div>
       )
     }
@@ -242,10 +213,11 @@
       {Question(3, q3)}
       {Question(4, q4)}
       <ChgScreen/>
-      <div id="result-con">
+      <div>
         {Result(1)}
         {Result(2)}
         {Result(3)}
+        {Result(4)}
       </div>
       <AnotherType/>
     </div>
@@ -256,40 +228,6 @@
     // ?https://ko.reactjs.org/docs/react-dom.html
     ReactDOM.render(rootChild, root);
     // !여기까지 붙여준 부분
-
-    // ---------------------------------------------
-    // layout
-    // *container
-    document.body.setAttribute('style',``);
-
-    const container = document.getElementById('container');
-    console.log(container);
-
-    const page = Array.from(container.children);
-    console.log(page);
-
-    // todo: page크기
-    class Size{
-      constructor(width, height){
-        this.width = width;
-        this.height = height;
-      }
-    }
-
-    // 이 부분을 따로 하는 것이 아니라 생성자 함수 자체를 만들어 줄 때 컴포넌트 자체에 만들어 주면 스타일까지 모두 지정할 수가 있음
-
-    // *페이지 크기
-    const pageSize = new Size('100vw', '100vh');
-    
-    page.map(elem => {
-      elem.setAttribute('style',`width: ${pageSize.width}; height: ${pageSize.height};`);
-    });
-
-
-
-
-    
-
 
 
   </script>
