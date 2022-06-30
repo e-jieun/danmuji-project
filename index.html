@@ -66,6 +66,15 @@
         this.answerTwo = answerTwo;
       }
     }
+
+    class ResultText{
+      constructor(subtitle, title, explainOne, explainTwo){
+        this.subtitle = subtitle;
+        this.title = title;
+        this.explainOne = explainOne;
+        this.explainTwo = explainTwo;
+      }
+    }
     
     // ?지금 여기서 <br/>코드를 사용해서 문장마다 나눠줘야 하는데
     // !해결을 하긴 했는데 escape 문자와 css 속성 중 하나인 white-space: pre-wrap;을 사용해서 \n이 빈 칸이 되는 공간을 줄바꿈이 되도록 만들어줬다
@@ -137,10 +146,16 @@
       )
     }
 
+    const resultBtnTxt = ['나와 어울리는 단무지는 어떤 단무지>', '내 친구는 어떤 단무지 유형일까요?', '단무지 유형 다시 테스트하러가기'];
+    function resultBtn(index){
+      return(
+        <div>
+          {resultBtnTxt[index]}
+          {ImgCon()}
+        </div>
+      )
+    }
 
-    // function ResultOne(){
-
-    // }
 
     // =========================================
     // !감싸주는 부모 태그가 반드시 존재해야한다
@@ -187,10 +202,36 @@
       )
     }
 
-    function Result(num){
+    const istjResult = new ResultText('똑부러지는 성격의 소유자', '꼬들 단무지형', 'Lorem ipsum dolor sit amet,\n consectetur adipiscing elit, sed do eiusmod\n tempor incididunt ut labore et dolore magna \naliqua. Ut enim ad minim veniam, quis nostrud', 'Lorem ipsum dolor sit amet, consectetur\n adipiscing elit, sed do eiusmod tempor incididunt \nut labore et dolore magna aliqua. Ut enim ad \nminim veniam, quis nostrud');
+
+    function ResultOne(num){
       num = `result-`+num;
       return(
         <div id={num}>
+          <div>
+            {ImgCon()}
+            <div>
+              {AppendChild(istjResult.subtitle)}
+              {AppendChild(istjResult.title)}
+            </div>
+            </div>
+            {AppendChild(istjResult.explainOne)}
+            {resultBtnTxt(0)}
+        </div>
+      )
+    }    function ResultTwo(num){
+      num = `result-`+num;
+      return(
+        <div id={num}>
+          {resultBtnTxt(1)}
+        
+        </div>
+      )
+    }    function ResultThree(num){
+      num = `result-`+num;
+      return(
+        <div id={num}>
+          {resultBtnTxt(2)}
         
         </div>
       )
@@ -214,10 +255,9 @@
       {Question(4, q4)}
       <ChgScreen/>
       <div>
-        {Result(1)}
-        {Result(2)}
-        {Result(3)}
-        {Result(4)}
+        {ResultOne(1)}
+        {ResultTwo(2)}
+        {ResultThree(3)}
       </div>
       <AnotherType/>
     </div>
