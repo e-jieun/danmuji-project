@@ -1,4 +1,4 @@
-#root #container > div, #root #container #main > section:last-child, #root #container #result-2 > div:nth-child(2) > div, #root #container #result-2 > div:nth-child(2) > div > .btn-con, #root #container #result-3 > div, .a-con, .a-con > div:first-child, .next-btn, .list-con {
+#root #container > div, #root #container #main > section:last-child, #root #container #result-2 > div:nth-child(2) > div, #root #container #result-2 > div:nth-child(2) > div > .btn-con, #root #container #result-3 > div, .a-con, .a-con > div:first-child, .next-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -180,6 +180,45 @@
   height: 6vh;
 }
 
+#root #container #another-type {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 9fr;
+      grid-template-rows: 1fr 9fr;
+  overflow: scroll;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+#root #container #another-type > div {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#root #container #another-type > div:first-child {
+  width: inherit;
+  height: 10vh;
+}
+
+#root #container #another-type > div:first-child > div:last-child {
+  font-size: 0.8rem;
+}
+
 .btn-con {
   width: 60vw;
   height: 7vh;
@@ -307,7 +346,22 @@
 }
 
 .list-con {
-  width: 70vw;
-  height: 20vw;
+  width: 80vw;
+  height: 15vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: "";
+          flex-direction: "";
+  margin: 0.5rem;
+  border-radius: 0 0 25px 0;
+  background-color: #ccc;
 }
 /*# sourceMappingURL=common.css.map */

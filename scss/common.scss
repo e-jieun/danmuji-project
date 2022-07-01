@@ -56,7 +56,7 @@ $color-41: #414141;
 
   #container {
     width: 100vw;
-
+    // @include set-display(flex, center, center, row);
     // height: 100vh;
     >div {
       @extend %page-size, %page-display,  %border-bk;
@@ -93,22 +93,9 @@ $color-41: #414141;
           }
         }
 
-        // >div:last-child {}
       }
     }
 
-    // #question-1 {
-    //   @extend %page-display;
-    // }
-    // #question-2 {
-    //   @extend %page-display;
-    // }
-    // #question-3 {
-    //   @extend %page-display;
-    // }
-    // #question-4 {
-    //   @extend %page-display;
-    // }
     #change-screen{
       // @extend %page-display;
       @include set-display(flex, center, space-evenly, column);
@@ -127,9 +114,9 @@ $color-41: #414141;
           @include set-size(90vw, 20vw);
           @include set-display(flex, center, center, column);
           // text 키워드
-          >div:first-child{
+          // >div:first-child{
 
-          }
+          // }
           // text 타이틀
           >div:last-child{
             @include set-position(relative, -2vh, '', '', '');
@@ -173,7 +160,24 @@ $color-41: #414141;
       }
     }
     #another-type{
-
+      position: relative;
+      @include set-size(100vw, 100vh);
+      display: grid;
+      grid-template-rows: 1fr 9fr;
+      overflow: scroll;
+      justify-self: center;
+      // text con
+      >div{
+        width: 100vw;
+        @include set-display(flex, center, center, column);
+      }
+      >div:first-child{
+        @include set-size(inherit, 10vh);
+        >div:last-child{
+          font-size: 0.8rem;
+        }
+      }
+      // list con
     }
   }
 }
@@ -270,6 +274,9 @@ $color-41: #414141;
 }
 
 .list-con{
-  @include set-size(70vw, 20vw);
-  @extend %page-display;
+  @include set-size(80vw, 15vw);
+  @include set-display(flex, center, space-around, '');
+  margin: 0.5rem;
+  border-radius: 0 0 25px 0;
+  background-color: $color-cc;
 }

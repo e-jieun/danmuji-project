@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./scss/common.css">
   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <!-- ? react의 중심이 되는 소스 -->
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <!-- ? JSX (react만의 독특한 마크업 방식 javascript XML 줄임말) DOM API 처리 소스 -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <!-- ? 트랜스컴파일링 바벨 _ JSX등 여러가지를 -> 웹브라우저 랜더링(출력)에 맞게 소스를 변환한다. -->
+  <link rel="stylesheet" href="./scss/common.css">
 
 </head>
 
@@ -305,7 +305,6 @@
           <div>
             {AppendChild(anotherTxtArr.at(0))}
             {AppendChild(anotherTxtArr.at(-1))}
-
         </div>
         <div className='list'> 
           {listCon(istjList)}
@@ -319,6 +318,9 @@
           {listCon(istjList)}
           {listCon(istjList)}
         </div>
+        <div className="next-btn">
+            {resultBtnTxt.at(-1)}
+          </div>
         </div>
       )
     }
