@@ -26,19 +26,6 @@
     // 태그를 작성하고 싶으면 문자열이 아니라 태그 자체로 작성해야한다
     
     // todo: 생성자 함수로 태그 요소를 작성해주는 부분을 다시 작성해서 태그 만들어 주자
-    
-    class ElementStyle{
-      constructor(width='', height='', display='', align='', justify='', position=''){
-        this.style = {
-          width: width,
-          height: height,
-          display: display,
-          alignItems: align,
-          justifyContent: justify,
-          position: position
-        }
-      }
-    }
 
     class Element {
       constructor(tagName, id = '', classList = [], children = [], parent = null) {
@@ -75,14 +62,22 @@
         this.explainTwo = explainTwo;
       }
     }
+
+    class AnotherText{
+      constructor(keyword, mbti, img){
+        this.keyword = keyword;
+        this.mbti = mbti;
+        this.img = img;
+      }
+    }
     
     // ?지금 여기서 <br/>코드를 사용해서 문장마다 나눠줘야 하는데
     // !해결을 하긴 했는데 escape 문자와 css 속성 중 하나인 white-space: pre-wrap;을 사용해서 \n이 빈 칸이 되는 공간을 줄바꿈이 되도록 만들어줬다
     const mainText = new QuestionText(`단무지 성격 유형 테스트`,`사람의 성격만큼 다양한 단무지 종류\n 당신은 어떤 단무지 종류와 닮았을까요?`,`닮은 단무지 찾으러 GO!`)
-    const q1 = new QuestionText('우연히 발견한 맛집의 단무지, 너무나도 내 취향이다!\n도대체 어떤 단무지인지 사장님께 여쭤보고 싶어졌다', '계산하며 사장님 에게 어느 회사의 단무지인지 단무지 특제 레시피가 있는지 물어본다', '다음에 맛집에 다시 방문해서 단무지를 좀 더 달라고 해야겠다란 생각을 하며 식사를 마친다');
-    const q2 = new QuestionText('맛집에 또 다시 방문했다\n오늘따라 상큼하게 느껴지는 프레쉬한 단무지\n유자향이 나는 단무지인 것 같다고 했더니 친구가 그걸 어떻게 알았냐고 물어본다', '유자향이 나기에 유자향이 난다고 한 것이온데...', '이건 새로운 단무지 세계로 날 인도해준 단무지야! 미미!'); 
-    const q3 = new QuestionText('단무지를 먹는데 친구가 이 집 단무지는 뭔가 특별하다고 한다', '\"단무지가 다 똑같은 단무지지...\"라고 생각한다', '\"그치! 나도 이 집 단무지 너무 좋아! 뭔가 특별하다니까!\"라고 공감한다');
-    const q4 = new QuestionText('이전에 갔던 맛집에 친구와 다시 가자고 약속을 잡았다\n약속을 잡고나서 당신이 할 일은?', '이번에 가면 이 단무지 물어봐야지', '저번에 그 집 단무지 맛있었는데...');
+    const q1 = new QuestionText('우연히 발견한 맛집의 단무지,\n 너무나도 내 취향이다!\n도대체 어떤 단무지인지\n사장님께 여쭤보고 싶어졌다\n\n이 때 당신의 행동은?', '계산하며 사장님에게\n어느 회사의 단무지인지\n단무지 특제 레시피가 있는지 물어본다', '다음에 맛집에 다시 방문해서\n단무지를 좀 더 달라고 해야겠다란\n생각을 하며 식사를 마친다');
+    const q2 = new QuestionText('맛집에 또 다시 방문했다\n오늘따라 상큼하게 느껴지는\n프레쉬한 단무지\n유자향이 나는 단무지인 것 같다 했더니\n친구가 그걸 어떻게 알았냐고 물어본다\n\n이 때 당신의 생각은?', '유자향이 나기에\n유자향이 난다고 한 것이온데...', '이건 새로운 단무지 세계로\n날 인도해준 단무지야!\n미미!'); 
+    const q3 = new QuestionText('단무지를 먹는데 친구가 이 집 단무지는 뭔가 특별하다고 한다\n\n이 때 당신의 대답은?', '\"단무지가 다 똑같은 단무지지...\"\n라고 생각한다', '\"그치! 나도 이 집 단무지 너무 좋아!\n뭔가 특별해 다른 집 단무지와는 달라!\"\n라고 공감한다');
+    const q4 = new QuestionText('이전에 갔던 맛집에\n친구와 다시 방문할 약속을 잡았다\n\n친구와의 약속을 잡고나서\n당신이 할 일은?', '\"이번에 가면 이 단무지 물어봐야지\"', '\"저번에 그 집 단무지 맛있었는데...\"');
 
     // html 만드는 것은 PascalCase로 작성해주기
     const Div = <div></div>;
@@ -108,7 +103,9 @@
     
     function ImgCon(src='', alt='', srcSet=''){
       return(
+        <div>
         <img src={src} alt={alt} srcSet={srcSet}></img>
+        </div>
       )
     }
 
@@ -124,6 +121,24 @@
               {Span}
               {Div}
             </div>  
+          </div>
+        </div>
+      )
+    }
+
+    const istjList = new AnotherText('일편단심 단무지', 'ISTJ', 'TVT.png');
+
+    function listCon(name){
+      return(
+        <div className="list">
+          <div className="list-con">
+            <div>
+              {AppendChild(name.keyword)}
+              {AppendChild(name.mbti)}
+            </div>
+            <div>
+              {ImgCon(name.img)}  
+            </div>
           </div>
         </div>
       )
@@ -157,6 +172,8 @@
     }
 
 
+
+
     // =========================================
     // !감싸주는 부모 태그가 반드시 존재해야한다
     function Main(){
@@ -179,22 +196,31 @@
       return(
         <div id={idNum}>
           <div className="q-con">
-            {AppendChild(qNum.question)}
+            {AppendChild('Q'+num+'. '+qNum.question)}
           </div>
-          <div className="a-con">
-            {BtnCon(qNum.answerOne)}
-            {BtnCon(qNum.answerTwo)}
+          <div>
+            <div className="a-con">
+              <div>
+                {'A1. '+qNum.answerOne}
+                </div>
+            </div>
+            <div className="a-con">
+              <div>
+                {'A2. '+qNum.answerTwo}
+                </div>
+            </div>
           </div>
           {ProgressCon(num)}
         </div>        
       )
     };
 
+    let testPng = 'TVT.png';
     // todo: 예시 이미지 넣어준 부분 이미지 수정하기
     function ChgScreen(){
       return(
         <div id="change-screen">
-          {ImgCon('TVT.png')}
+          {ImgCon(testPng)}
           <div>
             {BtnCon('현재 결과를 가져오고 있습니다')}
           </div>
@@ -207,40 +233,92 @@
     function ResultOne(num){
       num = `result-`+num;
       return(
-        <div id={num}>
+        <div id={num} className="result">
           <div>
-            {ImgCon()}
-            <div>
+            {ImgCon(testPng)}
+            <div className='a-con '>
               {AppendChild(istjResult.subtitle)}
               {AppendChild(istjResult.title)}
             </div>
             </div>
             {AppendChild(istjResult.explainOne)}
-            {resultBtnTxt(0)}
+            <div className="next-btn">
+              {resultBtnTxt.at(0)}
+            </div>
         </div>
       )
-    }    function ResultTwo(num){
-      num = `result-`+num;
-      return(
-        <div id={num}>
-          {resultBtnTxt(1)}
-        
-        </div>
-      )
-    }    function ResultThree(num){
-      num = `result-`+num;
-      return(
-        <div id={num}>
-          {resultBtnTxt(2)}
-        
-        </div>
-      )
-    }
 
+    }
+    
+    const resultTwoTxt = ['말해뭐해 찰떡궁합', '이런 단무지와는 별로...']
+    function ResultTwo(num){
+      num = `result-`+num;
+      return(
+        <div id={num} className="result">
+          {AppendChild(istjResult.explainTwo)}
+          <div>
+            <div>
+              {ImgCon(testPng)}
+              {BtnCon(resultTwoTxt.at(0))}
+              </div>
+              <div>
+                {ImgCon(testPng)} 
+                {BtnCon(resultTwoTxt.at(-1))}
+              </div>
+            </div>
+            <div className="next-btn">
+              {resultBtnTxt.at(1)} 
+            </div>
+        </div>
+      )
+    }    
+    
+    let shareTxt = '테스트 결과를 공유해봐요!'
+    const moveToAnotherTxtArr = ['내 친구는 어떤 단무지 유형일까요?', '다른 결과 한눈에 보기'];
+    function ResultThree(num){
+      num = `result-`+num;
+      return(
+        <div id={num} className="result">
+          <div>
+            {AppendChild(shareTxt)}
+            <div>
+            {ImgCon(testPng)}
+            </div>
+          </div>
+          <div>
+            {AppendChild(moveToAnotherTxtArr.at(0))}
+            <div className='a-con'>
+              {AppendChild(moveToAnotherTxtArr.at(-1))}
+            </div>
+          </div>
+          <div className="next-btn">
+            {resultBtnTxt.at(-1)}
+          </div>
+        </div>
+        )
+      }
+
+    const anotherTxtArr = ['안녕, 단무지 친구들', '이런 유형도 있어요!']
     function AnotherType(){
       return(
         <div id="another-type">
-        
+          <div>
+            {AppendChild(anotherTxtArr.at(0))}
+            {AppendChild(anotherTxtArr.at(-1))}
+
+        </div>
+        <div className='list'> 
+          {listCon(istjList)}
+          {listCon(istjList)}
+          {listCon(istjList)}
+          {listCon(istjList)}
+          {listCon(istjList)}
+          {listCon(istjList)}
+          {listCon(istjList)}
+          {listCon(istjList)}
+          {listCon(istjList)}
+          {listCon(istjList)}
+        </div>
         </div>
       )
     }
@@ -254,11 +332,9 @@
       {Question(3, q3)}
       {Question(4, q4)}
       <ChgScreen/>
-      <div>
         {ResultOne(1)}
         {ResultTwo(2)}
         {ResultThree(3)}
-      </div>
       <AnotherType/>
     </div>
     ;
@@ -269,9 +345,74 @@
     ReactDOM.render(rootChild, root);
     // !여기까지 붙여준 부분
 
+    // ===================================================================
 
+    // 프로그레스 바의 span과 div(동그란 원이 될 부분은 페이지별로 늘어나야 하는데...)
+
+    /* <!--*프로그레스 바의 현 페이지 지점 표시하는 크기 조절--> */
+    const span = Array.from(document.getElementsByTagName('span'));
+    console.log(span);
+
+    const progressCon = Array.from(document.getElementsByClassName('progress-con'));
+    // console.log(progressCon);
+      let progressNum;
+      let isProgressCon;
+      let currentNum = [];
+    progressCon.map((elem, index) => {
+      progressNum = elem.firstElementChild;
+      console.dir(progressNum);
+
+      let elemTxt = progressNum.innerHTML;
+      console.log(elemTxt);
+      currentNum.push(elemTxt); // 숫자가 배열로 담아진다
+      
+      isProgressCon = Array.from(span[index].parentElement);
+      console.log(isProgressCon);
+      isProgressCon.map(elem => elem.style.position = 'relative');
+    });
+    
+    /*
+    <!-- todo: psuedo1. span의 길이는 페이지 지점에 따라 달라진다
+      todo: psuedo2. 각각의 페이지에는 숫자 현지점이 매겨져있다
+      todo: psuedo3. 그리고 동그라미 위치를 span태그가 끝나는 지점에 붙여줘야 한다
+      -->
+      */
+    console.log(currentNum);  //배열로 들어오게 된다 => 이걸 숫자로 바꾸면?? 숫자로 가져와서 넓이값에 곱해주면 되지 않을까??
+    // ?innerText, innerHTMl를 get하면 될 것 같음 => 이 부분에 문자열로 1/4 이런식으로 들어있음
+    
+    /* <!--todo: 그러면 인덱스가 적용할 인덱스와 같으면 아까 currentNum에다가 push한 숫자를 가져다가 첫번째 글자만 잘러서 Number()로 형변환을 해서 곱해주면 된다--> */ 
+    function loadingCurrent(index){
+      let currentWidth = window.innerWidth*(85/100);
+      return currentWidth*Number(currentNum[index].slice(0,1)/4)+'px'; 
+    }
+    console.log(loadingCurrent(1));
+
+    // <!-- *프로그레스바를 페이지의 위치만큼 채워준 부분 -->
+    span.forEach((elem, index)=>{ 
+      elem.setAttribute('style',`width: 85vw; height: 3vw; position: absolute; background: #000; z-index: 2;`);
+      // 숫자로 되돌려 받아야 한다
+      let currentWidth = window.innerWidth*(85/100);
+      // *1페이지, 2페이지, 3페이지, 4페이지 => 반복문으로 페이지마다 들어갈 수 있도록 만들어 줌
+      for(let i = 0; i < span.length; i++){
+        console.log(index);
+        index === i ? elem.style.width = loadingCurrent(index) : console.log(currentWidth);
+      }
+      // 문제는 바의 끝에 위치한 동그라미를 바의 끝 위치에 같이 옮겨줘야 한다
+      console.log(elem.nextElementSibling);
+      console.log(elem.style.width);
+
+
+      /* 
+      <!-- todo: span 태그의 전체 길이 값을 지정해준 다음에
+      todo: psuedo span에 아까 currentNum을 숫자로 형변환해서 곱해주면 되지 않을까? -->
+         */
+    })
+
+
+    const conChild = Array.from(document.getElementById('container').children);
+    console.log(conChild);
   </script>
-  <!-- <script src="./js/questionpage.js" type="module"></script> -->
+  
 </body>
 
 </html>
