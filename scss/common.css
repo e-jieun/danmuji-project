@@ -1,14 +1,313 @@
+#root #container > div, #root #container #main > section:last-child, #root #container #result-2 > div:nth-child(2) > div, #root #container #result-2 > div:nth-child(2) > div > .btn-con, #root #container #result-3 > div, .a-con, .a-con > div:first-child, .next-btn, .list-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#root #container > div, #root #container #main, #root #container #main > section:first-child, #root #container #main > section:last-child {
+  width: 100vw;
+  height: 100vh;
+}
+
+#root #container > div, #root #container #main, #root #container #main > section:first-child, #root #container #main > section:last-child, #root #container #result-1 > div:first-child > div:first-child {
+  border: 1px solid #000;
+}
+
+.btn-con > div > div, .a-con {
+  border-radius: 0 50px 0 0;
+}
+
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-* #root {
+#root {
   white-space: pre-wrap;
 }
 
-* #root > {
+#root #container {
   width: 100vw;
-  height: 100vh;
+}
+
+#root #container #main > section:first-child {
+  position: absolute;
+}
+
+#root #container #main > section:last-child {
+  text-align: center;
+}
+
+#root #container #main > section:last-child > div:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 1rem;
+}
+
+#root #container #main > section:last-child > div:first-child > div:first-child {
+  font-size: 1.5rem;
+}
+
+#root #container #main > section:last-child > div:first-child > div:last-child {
+  font-size: 0.5rem;
+  line-height: 1rem;
+}
+
+#root #container #change-screen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#root #container .result {
+  position: relative;
+}
+
+#root #container #result-1 > div:first-child > div:first-child {
+  width: 100vw;
+  height: 100vw;
+}
+
+#root #container #result-1 > div:first-child > div:nth-child(2) {
+  position: relative;
+  top: -5vh;
+  bottom: "";
+  left: "";
+  right: "";
+  width: 90vw;
+  height: 20vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#root #container #result-1 > div:first-child > div:nth-child(2) > div:last-child {
+  position: relative;
+  top: -2vh;
+  bottom: "";
+  left: "";
+  right: "";
+  font-size: 1.2rem;
+}
+
+#root #container #result-1 > div:nth-child(2) {
+  position: relative;
+  top: "";
+  bottom: 10vh;
+  left: "";
+  right: "";
+}
+
+#root #container #result-2 > div:nth-child(2) {
+  width: 100vw;
+  height: 30vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: "";
+          flex-direction: "";
+}
+
+#root #container #result-2 > div:nth-child(2) > div {
+  width: 30vw;
+  height: 30vw;
+}
+
+#root #container #result-2 > div:nth-child(2) > div > .btn-con {
+  width: 40vw;
+  height: 10vw;
+}
+
+#root #container #result-2 > div:nth-child(2) > div > .btn-con > div > div:first-child {
+  padding: 0.5rem;
+}
+
+#root #container #result-3 > div {
+  row-gap: 2rem;
+}
+
+#root #container #result-3 > div:nth-child(2) > .a-con {
+  width: 80%;
+  height: 6vh;
+}
+
+.btn-con {
+  width: 60vw;
+  height: 7vh;
+}
+
+.btn-con > div {
+  width: inherit;
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  top: "";
+  bottom: "";
+  left: "";
+  right: "";
+}
+
+.btn-con > div > div {
+  width: 95%;
+  height: 80%;
+}
+
+.btn-con > div > div:first-child {
+  width: 95%;
+  height: 80%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: "";
+  z-index: 2;
+  padding-top: 1rem;
+  background-color: #ccc;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.btn-con > div > div:last-child {
+  position: absolute;
+  top: "";
+  bottom: 0;
+  left: "";
+  right: 0;
+  background-color: #c4c4c4;
+}
+
+.q-con {
+  width: 60vw;
+  height: 20vw;
+  text-align: center;
+}
+
+.q-con > div:first-child {
+  font-size: 0.9rem;
+}
+
+.a-con {
+  width: 70vw;
+  height: 17vw;
+  background-color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.a-con > div:first-child {
+  width: 80%;
+  height: 80%;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.progress-con {
+  width: 85vw;
+  height: 20vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: "";
+      -ms-flex-align: "";
+          align-items: "";
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.progress-con > div:first-child {
+  text-align: end;
+}
+
+.progress-con > div:last-child {
+  width: inherit;
+  height: 3vw;
+  background-color: #ccc;
+}
+
+.progress-con > div:last-child > div {
+  width: inherit;
+  height: inherit;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.next-btn {
+  width: 100vw;
+  height: 15vw;
+  position: absolute;
+  top: "";
+  bottom: 0;
+  left: "";
+  right: "";
+  background-color: #ccc;
+  font-size: 0.9rem;
+}
+
+.list-con {
+  width: 70vw;
+  height: 20vw;
 }
 /*# sourceMappingURL=common.css.map */
